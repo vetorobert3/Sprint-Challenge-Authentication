@@ -3,14 +3,14 @@ const bcrypt = require('bcryptjs');
 
 const Users = require('../jokes/jokes-model.js');
 
-router.post('/register', async (req, res) => {
+router.post('/register', (req, res) => {
   // implement registration
   const user = req.body;
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
 
   try {
-    const saved = await Users.add(user)
+    const saved = Users.add(user)
     res.status(201).json(saved)
   } catch (err) {
     console.log(err);

@@ -19,4 +19,11 @@ module.exports = {
       directory: './database/seeds' 
     },
   },
+
+  // test: {
+  //   client: 'sqlite3',
+  //   connection: {
+  //     filename: './database/auth.db3',
+  //   },
+  // },
 };
