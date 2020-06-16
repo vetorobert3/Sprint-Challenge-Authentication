@@ -1,5 +1,4 @@
 const { add, findById, findBy } = require('./jokes-model.js');
-const { expectCt } = require('helmet');
 
 describe('tests for API calls', () => {
   describe('add test', () => {
