@@ -1,30 +1,32 @@
 const User = require('../users/users-model.js');
+const db = require('../database/connection.js');
+const server = require('../api/server.js');
+const request = require('supertest');
 
 describe('testing API calls', () => {
-  // describe('testing add function', () => {
-  //   it('should get first user', async () => {
 
-  //     const name = await add();
-
-  //     expect(name).toBe('veto')
-
-  //   });
-  // });
   describe("Add a user", () => {
     describe("register()", () => {
       it("should register a new user", async () => {
-        await User.add({ username: "", password: "password" })
-        const user = await db("users")
-        expect(user).toHaveLength(1)
+        await User.add({ username: "veto3", password: "password" });
+
+        const user = await db("users");
+
+        expect(user).toHaveLength(10);
       })
-  
-      // it("should return a user token login()", async () => {
-      //   const res = await request(auth)
-      //     .post("/api/auth/register")
-      //     .send({ username: "Evelyn", password: "password" })
-      //   expect(res.body.token).toBeTruthy()
-      // })
     })
   })
-  
+
+  describe('has users', () => {
+    describe('has user property', () => {
+      test('registers successfully with res 201', () => {
+        return request(server)
+          .post('/api/auth/register')
+          .send({ "username": "lucie1", "password": "dance" })
+          .then(res => {
+            expect(res.status).toBe(201)
+          })
+      })
+    })
+  })
 });
