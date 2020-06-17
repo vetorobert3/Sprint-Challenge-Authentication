@@ -1,4 +1,4 @@
-const { add, findBy, findById } = require('../users/users-model.js');
+const User = require('../users/users-model.js');
 
 describe('testing API calls', () => {
   // describe('testing add function', () => {
@@ -13,7 +13,7 @@ describe('testing API calls', () => {
   describe("Add a user", () => {
     describe("register()", () => {
       it("should register a new user", async () => {
-        await User.add({ username: "Evelyn", password: "password" })
+        await User.add({ username: "", password: "password" })
         const user = await db("users")
         expect(user).toHaveLength(1)
       })
